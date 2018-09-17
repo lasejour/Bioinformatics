@@ -6,7 +6,7 @@ use Extracting;
 use File::Find::Rule;
 
 # Use the Extracting module to extract info from fastQC reports
-# unzips all zipped fastQC reports in a user provided directory
+# unzips a user provided zipped fastQC report
 # goes into each sub-directory and takes out the fastqc_data.txt reports
 # extracts the desired module names from those reports and passes them into a hash
 # prints contains of the hash, for each file, onto a report file.
@@ -69,6 +69,8 @@ unless ( -f $zipfile && $zipfile =~ m/\.zip$/ ) {
 }
 
 # decompress zipped file
+# get the fastqc_data.txt file
+# get the info that we want, push to an array
 my @hash_refs;
 open (ZIP, "unzip $zipfile|");
 while (<ZIP>) {
