@@ -87,7 +87,7 @@ chdir $dir;
 my $rule =  File::Find::Rule->new;
 $rule->file;
 $rule->name( '*data.txt' );
-my @files = $rule->in(@INC);
+my @files = $rule->in('.');
 
 ###############
 
